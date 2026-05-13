@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "Setor")
@@ -23,6 +23,6 @@ public class Setor {
     private String nome;
 
     @OneToMany(mappedBy = "setor")
-    @JsonIgnore
+    @JsonManagedReference
     private List<Funcionario> funcionarios;
 }

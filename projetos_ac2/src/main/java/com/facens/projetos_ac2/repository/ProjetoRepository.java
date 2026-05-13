@@ -16,7 +16,7 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
 
     // Buscar projeto com funcionários
     @EntityGraph(attributePaths = "funcionarios")
-    Optional<Projeto> findWithFuncionariosById(Integer id);
+    Optional<Projeto> findWithFuncionariosById(Long id);
 
     // Buscar projetos por período
     List<Projeto> findByDataInicioBetween(
@@ -32,6 +32,6 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
             WHERE f.id = :funcionarioId
             """)
     List<Projeto> buscarProjetosPorFuncionario(
-            @Param("funcionarioId") Integer funcionarioId
+            @Param("funcionarioId") Long funcionarioId
     );
 }

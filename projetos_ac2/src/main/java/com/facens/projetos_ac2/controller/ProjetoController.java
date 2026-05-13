@@ -1,13 +1,13 @@
 package com.facens.projetos_ac2.controller;
 
-import com.facens.projetos_ac2.entity.Funcionario;
+
 import com.facens.projetos_ac2.entity.Projeto;
-import com.facens.projetos_ac2.repository.FuncionarioRepository;
-import com.facens.projetos_ac2.repository.ProjetoRepository;
+import com.facens.projetos_ac2.service.ProjetoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -15,63 +15,54 @@ import java.util.List;
 public class ProjetoController {
 
     @Autowired
-    private ProjetoRepository repository;
+    private ProjetoService service;
 
-    @Autowired
-    private FuncionarioRepository funcionarioRepository;
-
-    // GET ALL
     @GetMapping
     public List<Projeto> listar() {
-        return repository.findAll();
+        return service.listar();
     }
 
-    // GET BY ID
     @GetMapping("/{id}")
     public Projeto buscarPorId(@PathVariable Long id) {
-        return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Projeto não encontrado"));
+        return service.buscarPorId(id);
     }
 
-    // POST
+    @GetMapping("/periodo")
+    public List<Projeto> buscarPorPeriodo(
+            @RequestParam LocalDate dataInicio,
+            @RequestParam LocalDate dataFim) {
+
+        return service.buscarPorPeriodo(dataInicio, dataFim);
+    }
+
+    @GetMapping("/funcionario/{id}")
+    public List<Projeto> buscarPorFuncionario(@PathVariable Long id) {
+        return service.buscarPorFuncionario(id);
+    }
+
     @PostMapping
     public Projeto criar(@RequestBody Projeto projeto) {
-        return repository.save(projeto);
+        return service.criar(projeto);
     }
 
-    // PUT
     @PutMapping("/{id}")
     public Projeto atualizar(@PathVariable Long id,
                              @RequestBody Projeto projetoAtualizado) {
 
-        Projeto projeto = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Projeto não encontrado"));
-
-        projeto.setDescricao(projetoAtualizado.getDescricao());
-
-        return repository.save(projeto);
+        return service.atualizar(id, projetoAtualizado);
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.deletar(id);
     }
 
-    // ADICIONAR FUNCIONÁRIOS AO PROJETO
     @PutMapping("/{id}/funcionarios")
     public Projeto adicionarFuncionarios(
             @PathVariable Long id,
             @RequestBody List<Long> funcionariosIds) {
 
-        Projeto projeto = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Projeto não encontrado"));
-
-        List<Funcionario> funcionarios =
-                funcionarioRepository.findAllById(funcionariosIds);
-
-        projeto.setFuncionarios(funcionarios);
-
-        return repository.save(projeto);
+        return service.adicionarFuncionarios(id, funcionariosIds);
     }
+
 }

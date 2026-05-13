@@ -1,50 +1,93 @@
 package com.facens.projetos_ac2.service;
 
+import com.facens.projetos_ac2.entity.Funcionario;
 import com.facens.projetos_ac2.entity.Projeto;
+import com.facens.projetos_ac2.repository.FuncionarioRepository;
 import com.facens.projetos_ac2.repository.ProjetoRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class ProjetoService {
 
-    @Autowired
-    private ProjetoRepository repository;
+    private final ProjetoRepository projetoRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
-    // LISTAR TODOS
+    public ProjetoService(ProjetoRepository projetoRepository,
+                          FuncionarioRepository funcionarioRepository) {
+        this.projetoRepository = projetoRepository;
+        this.funcionarioRepository = funcionarioRepository;
+    }
+
+    // 🔹 LISTAR TODOS
     public List<Projeto> listar() {
-        return repository.findAll();
+        return projetoRepository.findAll();
     }
 
-    // BUSCAR POR ID
+    // 🔹 BUSCAR POR ID
     public Projeto buscarPorId(Long id) {
-        return repository.findById(id)
-                .orElseThrow(() ->
-                        new RuntimeException("Projeto não encontrado"));
+        return projetoRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Projeto não encontrado"));
     }
 
-    // CRIAR
+    public List<Projeto> buscarPorPeriodo(LocalDate inicio, LocalDate fim) {
+        return projetoRepository.findByDataInicioBetween(inicio, fim);
+    }
+
+    // 🔹 CRIAR PROJETO (REGRA DE NEGÓCIO)
     public Projeto criar(Projeto projeto) {
-        return repository.save(projeto);
+
+        if (projeto.getDescricao() == null || projeto.getDescricao().isBlank()) {
+            throw new RuntimeException("Descrição do projeto é obrigatória");
+        }
+
+        return projetoRepository.save(projeto);
     }
 
-    // ATUALIZAR
-    public Projeto atualizar(Long id, Projeto projetoAtualizado) {
+    // 🔹 ATUALIZAR PROJETO
+    public Projeto atualizar(Long id, Projeto atualizado) {
 
         Projeto projeto = buscarPorId(id);
 
-        projeto.setDescricao(projetoAtualizado.getDescricao());
-        projeto.setDataInicio(projetoAtualizado.getDataInicio());
-        projeto.setDataFim(projetoAtualizado.getDataFim());
+        if (atualizado.getDescricao() != null && !atualizado.getDescricao().isBlank()) {
+            projeto.setDescricao(atualizado.getDescricao());
+        }
 
-        return repository.save(projeto);
+        return projetoRepository.save(projeto);
     }
 
-    // DELETAR
+    // 🔹 DELETAR
     public void deletar(Long id) {
-        repository.deleteById(id);
+        projetoRepository.deleteById(id);
+    }
+
+    // 🔥 REGRA IMPORTANTE: VINCULAR FUNCIONÁRIOS
+    public Projeto adicionarFuncionarios(Long idProjeto, List<Long> funcionariosIds) {
+
+        Projeto projeto = buscarPorId(idProjeto);
+
+        List<Funcionario> funcionarios = funcionarioRepository.findAllById(funcionariosIds);
+
+        if (funcionarios.isEmpty()) {
+            throw new RuntimeException("Nenhum funcionário válido encontrado");
+        }
+
+        projeto.setFuncionarios(funcionarios);
+
+        return projetoRepository.save(projeto);
+    }
+
+    // 🔥 BUSCAR PROJETOS POR FUNCIONÁRIO (REGRINHA DA PROVA)
+    public List<Projeto> buscarPorFuncionario(Long funcionarioId) {
+
+        Funcionario funcionario = funcionarioRepository.findById(funcionarioId)
+                .orElseThrow(() -> new RuntimeException("Funcionário não encontrado"));
+
+        return projetoRepository.findAll()
+                .stream()
+                .filter(p -> p.getFuncionarios().contains(funcionario))
+                .toList();
     }
 }

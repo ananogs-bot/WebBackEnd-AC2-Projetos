@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Projetos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Sistema de Projetos</h1>
+    <h3>Ana Araujo e Isabela Jacob</h3>
+</header>
+
+<main>
+    <section class="card">
+        <h2>Cadastrar Projeto</h2>
+        <br>
+
+        <form id="formProjeto">
+            <input type="text" id="descricao" placeholder="Descrição do projeto" required>
+            <input type="date"id="dataInicio" required>
+            <input type="date"id="dataFim"required>
+
+            <button type="submit">Salvar Projeto</button>
+
+        </form>
+    </section>
+
+
+    <section class="card">
+        <div class="titulo-lista">
+            <h2>Projetos Cadastrados</h2>
+
+            <button onclick="listarProjetos()">Atualizar</button>
+        </div>
+
+        <div id="listaProjetos"></div>
+    </section>
+
+</main>
+<script src="app.js"></script>
+
+</body>
+</html>

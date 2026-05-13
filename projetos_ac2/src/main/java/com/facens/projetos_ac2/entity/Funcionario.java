@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Funcionario")
@@ -23,6 +24,7 @@ public class Funcionario {
 
     @ManyToOne
     @JoinColumn(name = "setor_id")
+    @JsonBackReference
     private Setor setor;
 
     @ManyToMany(mappedBy = "funcionarios")
