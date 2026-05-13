@@ -1,0 +1,504 @@
+{
+  "info": {
+    "_postman_id": "8cede7be-b0b6-4827-bfef-2bac3476631a",
+    "name": "AC2 - Projetos",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49877866"
+  },
+  "item": [
+    {
+      "name": "Funcionários",
+      "item": [
+        {
+          "name": "GET Funcionários",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/funcionarios",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "funcionarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Funcionário por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/funcionarios/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "funcionarios",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Funcionário",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Ana Araujo\",\r\n    \"setor\": {\r\n        \"id\": 1\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/funcionarios",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "funcionarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Funcionário",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Ana Nogueira\",\r\n    \"setor\": {\r\n        \"id\": 2\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/funcionarios/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "funcionarios",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Funcionário",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/funcionarios/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "funcionarios",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Setores",
+      "item": [
+        {
+          "name": "GET Setores",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Ana Araujo\",\r\n    \"setor\": {\r\n        \"id\": 2\r\n    }\r\n}"
+            },
+            "url": {
+              "raw": "{{host}}/setores",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "setores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Setor por ID",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Ana Araujo\",\r\n    \"setor\": {\r\n        \"id\": 2\r\n    }\r\n}"
+            },
+            "url": {
+              "raw": "{{host}}/setores/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "setores",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Setores com Funcionários",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/setores/funcionarios",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "setores",
+                "funcionarios"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Setor",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"Marketing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/setores",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "setores"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Setor",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"nome\": \"MKT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/setores/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "setores",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Setor",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/setores/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "setores",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Projetos",
+      "item": [
+        {
+          "name": "GET Projetos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/projetos",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Projeto por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/projetos/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Projetos por Funcionário",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/projetos/funcionario/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos",
+                "funcionario",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET Projetos por Período",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/projetos/periodo?dataInicio=2025-04-01&dataFim=2025-05-13",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos",
+                "periodo"
+              ],
+              "query": [
+                {
+                  "key": "dataInicio",
+                  "value": "2025-04-01"
+                },
+                {
+                  "key": "dataFim",
+                  "value": "2025-05-13"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "POST Projeto",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"descricao\": \"Novo Sistema\",\r\n    \"dataInicio\": \"2024-05-01\",\r\n    \"dataFim\": \"2024-12-01\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/projetos",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PUT Projeto",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"descricao\": \"Sistema Atualizado\",\r\n    \"dataInicio\": \"2024-06-01\",\r\n    \"dataFim\": \"2024-11-01\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/projetos/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "DELETE Projeto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{host}}/projetos/{{id}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos",
+                "{{id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Projeto_Funcionário",
+      "item": [
+        {
+          "name": "PUT Projeto_Funcionário",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "[\r\n  1,\r\n  2\r\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{host}}/projetos/{{id}}/funcionarios",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "projetos",
+                "{{id}}",
+                "funcionarios"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "id",
+      "value": ""
+    },
+    {
+      "key": "host",
+      "value": ""
+    }
+  ]
+}
