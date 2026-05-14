@@ -174,3 +174,36 @@ Funcionalidades da interface:
 # Autor
 
 Projeto desenvolvido para a AC2 da disciplina de Desenvolvimento Web Back-End – ADS, por Ana Luiza Nogueira de Araujo e Isabela de Oliveira Jacob.
+
+---
+
+# Captura de Tela (Evidências)
+
+## Postman
+
+<img width="1917" height="1019" alt="Postman (1)" src="https://github.com/user-attachments/assets/2664067e-09b5-4a51-8f2c-dea8383c4ee3" />
+
+<img width="1914" height="1022" alt="Postman (2)" src="https://github.com/user-attachments/assets/33e7e543-8529-4bb1-97b8-b74902b87fc8" />
+
+<img width="1915" height="1018" alt="Postman (3)" src="https://github.com/user-attachments/assets/a1e8f387-06d7-4bf3-84ac-a7dda19cc603" />
+
+<img width="1919" height="1018" alt="Postman (4)" src="https://github.com/user-attachments/assets/fb58beb7-fb41-4b2d-96f1-acfe8be0715c" />
+
+
+## Estrutura das Pastas
+<img width="1919" height="1024" alt="Código" src="https://github.com/user-attachments/assets/647fc064-e0ce-4457-903c-987f2fe63e3b" />
+
+## Banco de Dados
+<img width="1916" height="1019" alt="Banco de Dados (1)" src="https://github.com/user-attachments/assets/9163a616-3e70-48da-b080-8c98f4f65a91" />
+
+<img width="1917" height="1020" alt="Banco de Dados (2)" src="https://github.com/user-attachments/assets/78ad97fc-34ca-4df1-a457-3a97672f4383" />
+
+<img width="1918" height="1018" alt="Banco de Dados (3)" src="https://github.com/user-attachments/assets/1697f11a-c14a-483a-8163-851e5f076099" />
+
+
+## Frontend
+<img width="1919" height="973" alt="Frontend (1)" src="https://github.com/user-attachments/assets/071b4462-ad09-435b-9a38-c8e29b5aa207" />
+
+<img width="1911" height="965" alt="Frontend (2)" src="https://github.com/user-attachments/assets/63ba0ef5-a24b-4923-9708-385039b832a6" />
+
+<img width="1894" height="971" alt="Frontend (3)" src="https://github.com/user-attachments/assets/9f5d55e3-2057-4b58-ab6a-4bdf07f7b6a0" />
