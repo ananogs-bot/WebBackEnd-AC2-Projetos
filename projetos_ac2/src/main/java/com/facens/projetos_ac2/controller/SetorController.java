@@ -15,13 +15,13 @@ public class SetorController {
     @Autowired
     private SetorService service;
 
-    // GET ALL
+    // GET
     @GetMapping
     public List<Setor> listar() {
         return service.listar();
     }
 
-    // GET BY ID
+    // GET POR ID
     @GetMapping("/{id}")
     public Setor buscarPorId(@PathVariable Long id) {
         return service.buscarPorId(id);

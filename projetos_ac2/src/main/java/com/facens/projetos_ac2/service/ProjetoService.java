@@ -21,12 +21,12 @@ public class ProjetoService {
         this.funcionarioRepository = funcionarioRepository;
     }
 
-    // 🔹 LISTAR TODOS
+    // LISTAR TODOS
     public List<Projeto> listar() {
         return projetoRepository.findAll();
     }
 
-    // 🔹 BUSCAR POR ID
+    // BUSCAR POR ID
     public Projeto buscarPorId(Long id) {
         return projetoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Projeto não encontrado"));
@@ -36,34 +36,53 @@ public class ProjetoService {
         return projetoRepository.findByDataInicioBetween(inicio, fim);
     }
 
-    // 🔹 CRIAR PROJETO (REGRA DE NEGÓCIO)
+    // CRIAR PROJETO
     public Projeto criar(Projeto projeto) {
+        if (projeto.getDescricao() == null ||
+                projeto.getDescricao().isBlank()) {
 
-        if (projeto.getDescricao() == null || projeto.getDescricao().isBlank()) {
             throw new RuntimeException("Descrição do projeto é obrigatória");
         }
 
+        if (projeto.getDataInicio().isAfter(projeto.getDataFim())) {
+
+            throw new RuntimeException(
+                    "A data de início não pode ser maior que a data fim"
+            );
+        }
         return projetoRepository.save(projeto);
     }
 
-    // 🔹 ATUALIZAR PROJETO
+    // ATUALIZAR PROJETO
     public Projeto atualizar(Long id, Projeto atualizado) {
 
         Projeto projeto = buscarPorId(id);
 
-        if (atualizado.getDescricao() != null && !atualizado.getDescricao().isBlank()) {
+        if (atualizado.getDescricao() != null &&
+                !atualizado.getDescricao().isBlank()) {
+
             projeto.setDescricao(atualizado.getDescricao());
         }
+
+        if (atualizado.getDataInicio().isAfter(atualizado.getDataFim())) {
+
+            throw new RuntimeException(
+                    "A data de início não pode ser maior que a data fim"
+            );
+        }
+
+        projeto.setDataInicio(atualizado.getDataInicio());
+        projeto.setDataFim(atualizado.getDataFim());
 
         return projetoRepository.save(projeto);
     }
 
-    // 🔹 DELETAR
+    // DELETAR
     public void deletar(Long id) {
         projetoRepository.deleteById(id);
     }
 
-    // 🔥 REGRA IMPORTANTE: VINCULAR FUNCIONÁRIOS
+    // VINCULAR FUNCIONÁRIOS
     public Projeto adicionarFuncionarios(Long idProjeto, List<Long> funcionariosIds) {
 
         Projeto projeto = buscarPorId(idProjeto);
@@ -79,7 +98,7 @@ public class ProjetoService {
         return projetoRepository.save(projeto);
     }
 
-    // 🔥 BUSCAR PROJETOS POR FUNCIONÁRIO (REGRINHA DA PROVA)
+    // BUSCAR PROJETOS POR FUNCIONÁRIO
     public List<Projeto> buscarPorFuncionario(Long funcionarioId) {
 
         Funcionario funcionario = funcionarioRepository.findById(funcionarioId)

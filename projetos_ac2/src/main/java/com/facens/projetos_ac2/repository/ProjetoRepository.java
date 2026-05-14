@@ -24,7 +24,6 @@ public interface ProjetoRepository extends JpaRepository<Projeto, Long> {
             LocalDate fim
     );
 
-    // Buscar projetos por funcionário
     @Query("""
             SELECT p
             FROM Projeto p

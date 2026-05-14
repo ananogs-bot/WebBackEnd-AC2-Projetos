@@ -1,8 +1,6 @@
 const API = "http://localhost:8081/projetos";
 const listaProjetos = document.getElementById("listaProjetos");
 
-
-
 async function listarProjetos(){
 
     try{
@@ -25,8 +23,8 @@ async function listarProjetos(){
                     <tr>
                         <th>ID</th>
                         <th>Descrição</th>
-                        <th>Data Início</th>
-                        <th>Data Fim</th>
+                        <th>Data de Início</th>
+                        <th>Data de Conclusão</th>
                     </tr>
                 </thead>
 

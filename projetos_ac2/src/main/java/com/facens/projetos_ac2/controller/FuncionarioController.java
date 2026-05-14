@@ -15,7 +15,7 @@ public class FuncionarioController {
     @Autowired
     private FuncionarioService service;
 
-    // GET ALL
+    // GET
     @GetMapping
     public List<Funcionario> listar() {
         return service.listar();
